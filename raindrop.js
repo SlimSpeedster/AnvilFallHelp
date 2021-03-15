@@ -2,39 +2,39 @@ class raindrop{
 	constructor(x,y,r)
 	{
 		var options={
-			isStatic:true,
-			restitution :0,
-            friction :1,
+            isStatic: false,
+			restitution :0.1,
+            friction :0.001
 			}
 		this.x=x;
 		this.y=y;
-		this.r=r
-		this.body=Bodies.circle(this.x, this.y, this.r, options)
-		World.add(world, this.body);
+		this.r=7;
+		this.body=Matter.Bodies.circle(this.x, this.y, this.r, options)
+		Matter.World.add(world, this.body);
 	}
 
 	
 
-	display(){
-		var rainPos=this.body.position;	
-		push()
-		translate(rainPos.x, rainPos.y);
-		// rectMode(CENTER);
-		rotate(this.body.angle)
-		fill("blue");
-		imageMode(CENTER);
-		ellipseMode(CENTER);
-//		image(this.image, 0,0,this.r*2, this.r*2)
-		pop()
+	
  
-            var pos = [this.body.position.x, this.body.position.y];
-            this.trajectory.push(pos);       
-          
-    var MaxDrops = 100;
-        for(var i=0; i<MaxDrops; i=i+1){
+        updateY(){
+           if(this.body.position.y>height){
+            Matter.Body.setPosition(this.body,{x:random(0,600), y:random(0,600)})
 
-            
- 
-}
-}
-}
+           }
+
+           
+        }
+
+        displayDrop(){
+            fill("blue");
+            ellipseMode(CENTER);
+            ellipse(this.body.position.x, this.body.position.y, this.r, this.r);
+
+
+        }
+
+
+    }
+
+
