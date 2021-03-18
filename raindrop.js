@@ -8,7 +8,8 @@ class raindrop{
 			}
 		this.x=x;
 		this.y=y;
-		this.r=7;
+		this.r=r;
+        this.image=loadImage("images/anvil.jpg");
 		this.body=Matter.Bodies.circle(this.x, this.y, this.r, options)
 		Matter.World.add(world, this.body);
 	}
@@ -19,7 +20,8 @@ class raindrop{
  
         updateY(){
            if(this.body.position.y>height){
-            Matter.Body.setPosition(this.body,{x:random(0,600), y:random(0,600)})
+            //setTimeout(null, 3);
+            Matter.Body.setPosition(this.body,{x:random(0,600), y:random(0,250)})
 
            }
 
@@ -27,11 +29,13 @@ class raindrop{
         }
 
         displayDrop(){
-            fill("blue");
-            ellipseMode(CENTER);
-            ellipse(this.body.position.x, this.body.position.y, this.r, this.r);
-
-
+            //push();
+            fill("red");
+            imageMode(CENTER);
+            image(this.image, 0,0,this.r, this.r)
+            //pop();
+            //ellipseMode(CENTER);
+            //ellipse(this.body.position.x, this.body.position.y, this.r, this.r);
         }
 
 
